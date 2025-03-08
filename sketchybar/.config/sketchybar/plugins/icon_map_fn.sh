@@ -69,6 +69,9 @@ function icon_map() {
   "FaceTime")
     icon_result=":face_time:"
     ;;
+  "Postman")
+    icon_result=":postman:"
+    ;;
   "System Preferences" | "System Settings")
     icon_result=":gear:"
     ;;

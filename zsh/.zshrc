@@ -47,4 +47,8 @@ zinit light-mode for \
 
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
+eval "$(jenv init -)"
 ### End of Zinit's installer chunk
+
+export EDITOR=nvim
+eval "$(jenv init -)"

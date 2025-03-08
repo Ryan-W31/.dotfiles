@@ -13,6 +13,6 @@ sketchybar --add item media left		                                \
                             update_freq=10                          \
 			                      scroll_texts=on			                    \
 			                      scroll_duration=50			                \
-                            label.max_chars=20			    
+                            label.max_chars=15			    
 
 sketchybar --subscribe media media_change

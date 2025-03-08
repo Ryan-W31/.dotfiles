@@ -24,8 +24,6 @@ vim.g.maplocalleader = "\\"
 -- KEYBINDS --
 vim.keymap.set('n', '<leader>q', '<cmd>quit<cr>')
 vim.keymap.set('n', '<leader>w', '<cmd>write<cr>')
-vim.keymap.set({'n', 'x'}, 'x', '_x')
-vim.keymap.set({'n', 'x'}, 'X', '_d')
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set('n', '<leader>a', ':keepjumps normal! ggVG<cr>')
@@ -39,7 +37,7 @@ require("lazy").setup({
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "habamax" } },
+  install = { colorscheme = { "tokyonight" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
 })

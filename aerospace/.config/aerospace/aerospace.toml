@@ -118,20 +118,22 @@ alt-1 = 'workspace Home'
 alt-2 = 'workspace Safari'
 alt-3 = 'workspace Ghostty'
 alt-4 = 'workspace IDEA'
-alt-5 = 'workspace Slack'
-alt-6 = 'workspace Mail'
-alt-7 = 'workspace Calendar'
-alt-8 = 'workspace Music'
+alt-5 = 'workspace Postman'
+alt-6 = 'workspace Slack'
+alt-7 = 'workspace Mail'
+alt-8 = 'workspace Calendar'
+alt-9 = 'workspace Music'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace Home'
 alt-shift-2 = 'move-node-to-workspace Safari'
 alt-shift-3 = 'move-node-to-workspace Ghostty'
 alt-shift-4 = 'move-node-to-workspace IDEA'
-alt-shift-5 = 'move-node-to-workspace Slack'
-alt-shift-6 = 'move-node-to-workspace Mail'
-alt-shift-7 = 'move-node-to-workspace Calendar'
-alt-shift-8 = 'move-node-to-workspace Music'
+alt-shift-5 = 'move-node-to-workspace Postman'
+alt-shift-6 = 'move-node-to-workspace Slack'
+alt-shift-7 = 'move-node-to-workspace Mail'
+alt-shift-8 = 'move-node-to-workspace Calendar'
+alt-shift-9 = 'move-node-to-workspace Music'
 
 
 
@@ -139,10 +141,11 @@ ctrl-alt-1 = 'summon-workspace Home'
 ctrl-alt-2 = 'summon-workspace Safari'
 ctrl-alt-3 = 'summon-workspace Ghostty'
 ctrl-alt-4 = 'summon-workspace IDEA'
-ctrl-alt-5 = 'summon-workspace Slack'
-ctrl-alt-6 = 'summon-workspace Mail'
-ctrl-alt-7 = 'summon-workspace Calendar'
-ctrl-alt-8 = 'summon-workspace Music'
+ctrl-alt-5 = 'summon-workspace Postman'
+ctrl-alt-6 = 'summon-workspace Slack'
+ctrl-alt-7 = 'summon-workspace Mail'
+ctrl-alt-8 = 'summon-workspace Calendar'
+ctrl-alt-9 = 'summon-workspace Music'
 
 
 alt-shift-f = 'fullscreen'
@@ -188,6 +191,10 @@ if.app-id = 'com.jetbrains.intellij.ce'
 run = "move-node-to-workspace IDEA"
 
 [[on-window-detected]]
+if.app-id = 'com.postmanlabs.mac'
+run = "move-node-to-workspace Postman"
+
+[[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
 run = "move-node-to-workspace Slack"
 
@@ -201,6 +208,10 @@ run = "move-node-to-workspace Calendar"
 
 [[on-window-detected]]
 if.app-id = 'Cisco-Systems.Spark'
+run = "move-node-to-workspace Home"
+
+[[on-window-detected]]
+if.app-id = 'com.openai.chat'
 run = "move-node-to-workspace Home"
 
 [[on-window-detected]]
@@ -221,6 +232,7 @@ run = "layout floating"
 "Ghostty" = "main"
 "Music" = ["secondary", "main"]
 "IDEA" = "main"
+"Postman" = "main"
 "Slack" = ["secondary", "main"]
 "Mail" = ["secondary", "main"]
 "Calendar" = ["secondary","main"]
