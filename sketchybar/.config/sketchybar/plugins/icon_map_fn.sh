@@ -45,8 +45,11 @@ function icon_map() {
   "Safari")
     icon_result=":safari:"
     ;;
-  "Xcode")
-    icon_result=":xcode:"
+  "Arc" )
+    icon_result=":arc:"
+    ;;
+  "VSCode" | "Xcode")
+    icon_result=":code:"
     ;;
   "Numbers")
     icon_result=":numbers:"

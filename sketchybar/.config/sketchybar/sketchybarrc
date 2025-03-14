@@ -41,7 +41,7 @@ source "./items/clock.sh"
 source "./items/date.sh"
 source "./items/weather.sh"
 source "./items/battery.sh"
-source "./items/events.sh"
+#source "./items/events.sh"
 
 # finish config
 sketchybar --hotload on
