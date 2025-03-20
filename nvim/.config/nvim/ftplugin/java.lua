@@ -14,7 +14,7 @@ local mason = require("mason-registry")
 local jdtls_path = mason.get_package("jdtls"):get_install_path()
 local java_debug_path = mason.get_package("java-debug-adapter"):get_install_path()
 local java_test_path = mason.get_package("java-test"):get_install_path()
-local config_path = vim.fn.glob(jdtls_path .. "/config_mac")
+local config_path = vim.fn.glob(jdtls_path .. "/config_" .. system_os)
 local lombok_path = jdtls_path .. "/lombok.jar"
 local equinox_launcher_path = vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar")
 
@@ -32,7 +32,7 @@ local config = {
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
     "-Dlog.protocol=true",
     "-Dlog.level=ALL",
-    "-javaagent:/Users/ryanweisman/.local/jars/lombok.jar",
+    "-javaagent:" .. lombok_path,
     "-Xmx4g",
     "--add-modules=ALL-SYSTEM",
     "--add-opens",
@@ -60,7 +60,7 @@ local config = {
       server = { launchMode = "Hybrid" },
       -- TODO Replace this with the absolute path to your main java version (JDK 17 or higher)
       home = "/Library/Java/JavaVirtualMachines/applejdk-21.0.6.7.1.jdk/Contents/Home",
-      jdt = { ls = { java = { home = "/Library/Java/JavaVirtualMachines/applejdk-21.0.6.7.1.jdk/Contents/Home" }, lombokSupport = true} },
+      jdt = { ls = { java = { home = "/Library/Java/JavaVirtualMachines/applejdk-21.0.6.7.1.jdk/Contents/Home" } } },
       eclipse = {
         downloadSources = true,
       },
@@ -136,9 +136,8 @@ local config = {
     -- extendedClientCapabilities = jdtls.extendedClientCapabilities,
   },
   on_attach = function(_, _)
-    -- jdtls.setup_dap({ config_overrides = { hotcodereplace = "auto" } })
---    require("jdtls.dap").setup_dap_main_class_configs()
-  --  require("kaleb.utils").lsp_attach_function()
+    jdtls.setup_dap({ config_overrides = { hotcodereplace = "auto" } })
+    require("jdtls.dap").setup_dap_main_class_configs()
   end,
 }
 
