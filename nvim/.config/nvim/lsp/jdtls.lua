@@ -9,7 +9,6 @@ elseif vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
 	system_os = "win"
 end
 
-local jdtls = require("jdtls")
 local mason = require("mason-registry")
 local jdtls_path = mason.get_package("jdtls"):get_install_path()
 local java_debug_path = mason.get_package("java-debug-adapter"):get_install_path()
@@ -22,7 +21,7 @@ local bundles = { vim.fn.glob(java_debug_path .. "/extension/server/com.microsof
 vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_path .. "/extension/server/*.jar"), "\n"))
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
-local config = {
+return {
 	-- The command that starts the language server
 	-- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
 	cmd = {
@@ -141,23 +140,4 @@ local config = {
 		bundles = bundles,
 		-- extendedClientCapabilities = jdtls.extendedClientCapabilities,
 	},
-	on_attach = function(_, _)
-		jdtls.setup_dap({ config_overrides = { hotcodereplace = "auto" } })
-		require("jdtls.dap").setup_dap_main_class_configs()
-	end,
 }
-
--- This starts a new client & server, or attaches to an existing client & server based on the `root_dir`.
-jdtls.start_or_attach(config)
-
-vim.diagnostic.config({
-	underline = {
-		vim.diagnostic.severity.ERROR,
-		vim.diagnostic.severity.WARN,
-	},
-	virtual_text = {
-		severity = {
-			vim.diagnostic.severity.ERROR,
-		},
-	},
-})
