@@ -1,5 +1,6 @@
 local global = vim.g
 local o = vim.opt
+local d = vim.diagnostic
 
 -- Editor options
 
@@ -26,3 +27,18 @@ o.splitright = true
 o.splitbelow = true
 o.termguicolors = true
 o.wrap = false
+o.winborder = "rounded"
+
+-- Diagnostics options
+d.config({
+	severity_sort = true,
+	signs = {
+		text = {
+			[d.severity.ERROR] = "✘",
+			[d.severity.WARN] = "",
+			[d.severity.HINT] = "",
+			[d.severity.INFO] = "",
+		},
+	},
+    virtual_text = true,
+})

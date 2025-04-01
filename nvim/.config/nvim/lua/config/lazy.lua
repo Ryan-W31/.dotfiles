@@ -1,4 +1,3 @@
--- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -13,11 +12,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 		os.exit(1)
 	end
 end
+
 vim.opt.rtp:prepend(lazypath)
 
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
@@ -29,6 +26,9 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<leader>a", ":keepjumps normal! ggVG<cr>")
 vim.keymap.set("n", "<leader>e", "<CMD>Neotree toggle<CR>")
 vim.keymap.set("n", "<leader>r", "<CMD>Neotree focus<CR>")
+vim.keymap.set("n", "<leader>g", "<CMD>Neogit<CR>")
+vim.keymap.set("n", "<leader>cdo", vim.diagnostic.open_float, { buffer = bufnr, desc = "Code Diagnostic Open" })
+
 -- Setup lazy.nvim
 require("lazy").setup({
 	spec = {
@@ -40,4 +40,7 @@ require("lazy").setup({
 	install = { colorscheme = { "tokyonight" } },
 	-- automatically check for plugin updates
 	checker = { enabled = true },
+	ui = {
+		border = "rounded",
+	},
 })

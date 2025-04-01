@@ -61,6 +61,9 @@ return {
 		},
 
 		signature = { enabled = true },
+		completion = {
+			ghost_text = { enabled = true },
+		},
 	},
 	opts_extend = { "sources.default" },
 }

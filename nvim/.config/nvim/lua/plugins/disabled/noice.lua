@@ -26,9 +26,6 @@ return {
 				enabled = false,
 			},
 		},
-		notify = {
-			enabled = false,
-		},
 		-- you can enable a preset for easier configuration
 		presets = {
 			bottom_search = true, -- use a classic bottom cmdline for search
