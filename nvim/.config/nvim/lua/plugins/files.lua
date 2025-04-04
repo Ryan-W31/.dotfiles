@@ -22,20 +22,20 @@ return {
 		local function mapSymbols(status, is_symlink)
 			local statusMap = {
         -- stylua: ignore start 
-        [" M"] = { symbol = "•", hlGroup  = "MiniDiffSignChange"}, -- Modified in the working directory
-        ["M "] = { symbol = "✹", hlGroup  = "MiniDiffSignChange"}, -- modified in index
-        ["MM"] = { symbol = "≠", hlGroup  = "MiniDiffSignChange"}, -- modified in both working tree and index
-        ["A "] = { symbol = "+", hlGroup  = "MiniDiffSignAdd"   }, -- Added to the staging area, new file
-        ["AA"] = { symbol = "≈", hlGroup  = "MiniDiffSignAdd"   }, -- file is added in both working tree and index
-        ["D "] = { symbol = "-", hlGroup  = "MiniDiffSignDelete"}, -- Deleted from the staging area
-        ["AM"] = { symbol = "⊕", hlGroup  = "MiniDiffSignChange"}, -- added in working tree, modified in index
-        ["AD"] = { symbol = "-•", hlGroup = "MiniDiffSignChange"}, -- Added in the index and deleted in the working directory
-        ["R "] = { symbol = "→", hlGroup  = "MiniDiffSignChange"}, -- Renamed in the index
-        ["U "] = { symbol = "‖", hlGroup  = "MiniDiffSignChange"}, -- Unmerged path
-        ["UU"] = { symbol = "⇄", hlGroup  = "MiniDiffSignAdd"   }, -- file is unmerged
-        ["UA"] = { symbol = "⊕", hlGroup  = "MiniDiffSignAdd"   }, -- file is unmerged and added in working tree
-        ["??"] = { symbol = "?", hlGroup  = "MiniDiffSignDelete"}, -- Untracked files
-        ["!!"] = { symbol = "!", hlGroup  = "MiniDiffSignChange"}, -- Ignored files
+        [" M"] = { symbol = "•", hlGroup  = "Function"}, -- Modified in the working directory
+        ["M "] = { symbol = "✹", hlGroup  = "Function"}, -- modified in index
+        ["MM"] = { symbol = "≠", hlGroup  = "Function"}, -- modified in both working tree and index
+        ["A "] = { symbol = "+", hlGroup  = "Type"   }, -- Added to the staging area, new file
+        ["AA"] = { symbol = "≈", hlGroup  = "Type"   }, -- file is added in both working tree and index
+        ["D "] = { symbol = "-", hlGroup  = "@module.builtin"}, -- Deleted from the staging area
+        ["AM"] = { symbol = "⊕", hlGroup  = "Function"}, -- added in working tree, modified in index
+        ["AD"] = { symbol = "-•", hlGroup = "Function"}, -- Added in the index and deleted in the working directory
+        ["R "] = { symbol = "→", hlGroup  = "Function"}, -- Renamed in the index
+        ["U "] = { symbol = "‖", hlGroup  = "Function"}, -- Unmerged path
+        ["UU"] = { symbol = "⇄", hlGroup  = "Type"   }, -- file is unmerged
+        ["UA"] = { symbol = "⊕", hlGroup  = "Type"   }, -- file is unmerged and added in working tree
+        ["??"] = { symbol = "?", hlGroup  = "@module.builtin"}, -- Untracked files
+        ["!!"] = { symbol = "", hlGroup  = "Comment"}, -- Ignored files
 				-- stylua: ignore end
 			}
 
