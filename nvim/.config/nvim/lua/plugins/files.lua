@@ -22,20 +22,20 @@ return {
 		local function mapSymbols(status, is_symlink)
 			local statusMap = {
         -- stylua: ignore start 
-        [" M"] = { symbol = "•", hlGroup  = "Function"}, -- Modified in the working directory
-        ["M "] = { symbol = "✹", hlGroup  = "Function"}, -- modified in index
-        ["MM"] = { symbol = "≠", hlGroup  = "Function"}, -- modified in both working tree and index
-        ["A "] = { symbol = "+", hlGroup  = "Type"   }, -- Added to the staging area, new file
-        ["AA"] = { symbol = "≈", hlGroup  = "Type"   }, -- file is added in both working tree and index
-        ["D "] = { symbol = "-", hlGroup  = "@module.builtin"}, -- Deleted from the staging area
-        ["AM"] = { symbol = "⊕", hlGroup  = "Function"}, -- added in working tree, modified in index
-        ["AD"] = { symbol = "-•", hlGroup = "Function"}, -- Added in the index and deleted in the working directory
-        ["R "] = { symbol = "→", hlGroup  = "Function"}, -- Renamed in the index
-        ["U "] = { symbol = "‖", hlGroup  = "Function"}, -- Unmerged path
-        ["UU"] = { symbol = "⇄", hlGroup  = "Type"   }, -- file is unmerged
-        ["UA"] = { symbol = "⊕", hlGroup  = "Type"   }, -- file is unmerged and added in working tree
-        ["??"] = { symbol = "?", hlGroup  = "@module.builtin"}, -- Untracked files
-        ["!!"] = { symbol = "", hlGroup  = "Comment"}, -- Ignored files
+        [" M"] = { symbol = "•", hlGroup  = "DiagnosticWarn"}, -- Modified in the working directory
+        ["M "] = { symbol = "✹", hlGroup  = "DiagnosticWarn"}, -- modified in index
+        ["MM"] = { symbol = "≠", hlGroup  = "DiagnosticWarn"}, -- modified in both working tree and index
+        ["A "] = { symbol = "+", hlGroup  = "DiagnosticHint"   }, -- DiagnosticHint to the staging area, new file
+        ["AA"] = { symbol = "≈", hlGroup  = "DiagnosticHint"   }, -- file is added in both working tree and index
+        ["D "] = { symbol = "-", hlGroup  = "DiagnosticError"}, -- Deleted from the staging area
+        ["AM"] = { symbol = "⊕", hlGroup  = "DiagnosticWarn"}, -- added in working tree, modified in index
+        ["AD"] = { symbol = "-•", hlGroup = "DiagnosticWarn"}, -- DiagnosticHint in the index and deleted in the working directory
+        ["R "] = { symbol = "→", hlGroup  = "DiagnosticWarn"}, -- Renamed in the index
+        ["U "] = { symbol = "‖", hlGroup  = "DiagnosticWarn"}, -- Unmerged path
+        ["UU"] = { symbol = "⇄", hlGroup  = "DiagnosticHint"   }, -- file is unmerged
+        ["UA"] = { symbol = "⊕", hlGroup  = "DiagnosticHint"   }, -- file is unmerged and added in working tree
+        ["??"] = { symbol = "?", hlGroup  = "DiagnosticError"}, -- Untracked files
+        ["!!"] = { symbol = "", hlGroup  = "NonText"}, -- Ignored files
 				-- stylua: ignore end
 			}
 
