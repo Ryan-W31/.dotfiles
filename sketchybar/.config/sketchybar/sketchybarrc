@@ -13,9 +13,9 @@ sketchybar --bar height=54        \
 sketchybar --default updates=when_shown                             \
                      icon.font="Liga SFMono Nerd Font:Normal:16.0"  \
                      icon.color=$FOREGROUND                         \
-                     label.font="Zed Mono:Normal:16.0" 		    \
-		     label.color=$FOREGROUND			    \
-		     label.y_offset=1 				    \
+                     label.font="Zed Mono:Normal:16.0" 		        \
+		             label.color=$FOREGROUND			            \
+		             label.y_offset=1 				                \
                      y_offset=0
 # update defaults
 sketchybar --default                                                \
@@ -27,13 +27,13 @@ sketchybar --default                                                \
                      icon.padding_right=4                           \
                      label.padding_left=4                           \
                      label.padding_right=12                         \
-		     background.border_color=$FOREGROUND	    \
+		             background.border_color=$FOREGROUND	        \
                      background.border_width=2
 
 # ~~ left items ~~
 source "./items/apple.sh"
 source "./items/spaces.sh"
-# source "./items/front_app.sh"
+#source "./items/front_app.sh"
 source "./items/media.sh"
 
 # ~~ right items ~~

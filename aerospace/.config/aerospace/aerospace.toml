@@ -114,44 +114,38 @@ alt-shift-minus = 'resize height -50'
 alt-shift-equal = 'resize height +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-alt-1 = 'workspace Home'
-#alt-2 = 'workspace Safari'
-alt-2 = 'workspace Arc'
-alt-3 = 'workspace Ghostty'
-alt-4 = 'workspace VSCode'
-#alt-4 = 'workspace IDEA'
-#alt-5 = 'workspace Slack'
-#alt-6 = 'workspace Mail'
-#alt-7 = 'workspace Calendar'
-#alt-8 = 'workspace Music'
-alt-5 = 'workspace Music'
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-1 = 'move-node-to-workspace Home'
-#alt-shift-2 = 'move-node-to-workspace Safari'
-alt-shift-2 = 'move-node-to-workspace Arc'
-alt-shift-3 = 'move-node-to-workspace Ghostty'
-alt-shift-4 = 'move-node-to-workspace VSCode'
-#alt-shift-4 = 'move-node-to-workspace IDEA'
-#alt-shift-5 = 'move-node-to-workspace Slack'
-#alt-shift-6 = 'move-node-to-workspace Mail'
-#alt-shift-7 = 'move-node-to-workspace Calendar'
-#alt-shift-8 = 'move-node-to-workspace Music'
-alt-shift-5 = 'move-node-to-workspace Music'
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
 
 
 
-ctrl-alt-1 = 'summon-workspace Home'
-#ctrl-alt-2 = 'summon-workspace Safari'
-ctrl-alt-2 = 'summon-workspace Arc'
-ctrl-alt-3 = 'summon-workspace Ghostty'
-ctrl-alt-4 = 'summon-workspace VSCode'
-#ctrl-alt-4 = 'summon-workspace IDEA'
-#ctrl-alt-5 = 'summon-workspace Slack'
-#ctrl-alt-6 = 'summon-workspace Mail'
-#ctrl-alt-7 = 'summon-workspace Calendar'
-#ctrl-alt-8 = 'summon-workspace Music'
-ctrl-alt-5 = 'summon-workspace Music'
+ctrl-alt-1 = 'summon-workspace 1'
+ctrl-alt-2 = 'summon-workspace 2'
+ctrl-alt-3 = 'summon-workspace 3'
+ctrl-alt-4 = 'summon-workspace 4'
+ctrl-alt-5 = 'summon-workspace 5'
+ctrl-alt-6 = 'summon-workspace 6'
+ctrl-alt-7 = 'summon-workspace 7'
+ctrl-alt-8 = 'summon-workspace 8'
+ctrl-alt-9 = 'summon-workspace 9'
 
 
 alt-shift-f = 'fullscreen'
@@ -179,46 +173,49 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
+[[on-window-detected]]
+if.app-id = 'Cisco-Systems.Spark'
+run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari'
-run = "move-node-to-workspace Safari"
+run = "move-node-to-workspace 2"
 
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
-run = "move-node-to-workspace Arc"
+run = "move-node-to-workspace 2"
 
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run = "move-node-to-workspace Ghostty"
-
-[[on-window-detected]]
-if.app-id = 'com.apple.Music'
-run = "move-node-to-workspace Music"
+run = "move-node-to-workspace 3"
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
-run = "move-node-to-workspace VSCode"
+run = "move-node-to-workspace 4"
 
 [[on-window-detected]]
 if.app-id = 'com.jetbrains.intellij.ce'
-run = "move-node-to-workspace IDEA"
+run = "move-node-to-workspace 4"
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
-run = "move-node-to-workspace Slack"
+run = "move-node-to-workspace 6"
 
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
-run = "move-node-to-workspace Mail"
+run = "move-node-to-workspace 7"
 
 [[on-window-detected]]
 if.app-id = 'com.apple.iCal'
-run = "move-node-to-workspace Calendar"
+run = "move-node-to-workspace 8"
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Music'
+run = "move-node-to-workspace 9"
 
 [[on-window-detected]]
 if.app-id = 'Cisco-Systems.Spark'
-run = "move-node-to-workspace Home"
+run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
@@ -234,13 +231,12 @@ run = "layout floating"
 
 
 [workspace-to-monitor-force-assignment]
-"Safari" = "main"
-"Arc" = "main"
-"Ghostty" = "main"
-"Music" = ["secondary", "main"]
-"VSCode" = "main"
-"IDEA" = "main"
-"Slack" = ["secondary", "main"]
-"Mail" = ["secondary", "main"]
-"Calendar" = ["secondary","main"]
-"Home" = ["secondary", "main"]
+"1" = ["secondary", "main"]
+"2" = "main"
+"3" = "main"
+"4" = "main"
+"5" = "main"
+"6" = ["secondary", "main"]
+"7" = ["secondary", "main"]
+"8" = ["secondary","main"]
+"9" = ["secondary", "main"]
