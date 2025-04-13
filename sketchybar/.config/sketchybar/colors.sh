@@ -1,6 +1,5 @@
 #!/bin/bash
 
-### Gruv
 export BACKGROUND=0xFF1A1B26
 export FOREGROUND=0xFFC0CAF5
 

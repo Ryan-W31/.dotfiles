@@ -1,10 +1,9 @@
 #!/bin/sh
 
-# battery
-sketchybar --add item battery right                                 \
-           --set      battery icon=                                \
-                              icon.color=$LIGHT_GREEN               \
-                              label="--%"                           \
-                              script="~/.config/sketchybar/plugins/battery.sh" \
-                              update_freq=20
+sketchybar --add item battery right                     \
+           --set      battery icon=                    \
+                              icon.color=$LIGHT_GREEN   \
+                              label="--%"               \
+                              update_freq=20            \
+                              script="~/.config/sketchybar/plugins/battery.sh"
 
