@@ -6,11 +6,28 @@ sketchybar --add event aerospace_workspace_change
 # Define your spaces with names and corresponding Nerd Font icons
 SPACES=("1" "2" "3" "4" "5" "6" "7" "8" "9")
 
+# Add front app name
+sketchybar  --add item  workspace.front_app left                    \
+            --subscribe workspace.front_app front_app_switched      \
+            --set       workspace.front_app icon.drawing=off        \
+                                            label.width=100         \
+                                            label.align=center      \
+                                            label.max_chars=8             \
+                                            scroll_texts=on         \
+                                            background.drawing=off  \
+                                            script="~/.config/sketchybar/plugins/front_app.sh" 
+
+# Add separator icon
+sketchybar  --add item  workspace.separator left                    \
+            --set       workspace.separator icon=                  \
+                                            label.drawing=off       \
+                                            background.drawing=off  \
+          
 # Add spaces
 for SPACE in "${SPACES[@]}";
     do
-        sketchybar  --add item  "workspace.$SPACE" left                                 \
-                    --subscribe "workspace.$SPACE" aerospace_workspace_change           \
+        sketchybar  --add item  "workspace.$SPACE"  left                                 \
+                    --subscribe "workspace.$SPACE"  aerospace_workspace_change           \
                     --set       "workspace.$SPACE"                                      \
                                                     icon.font="Zed Mono:Normal:16.0"    \
                                                     icon="$SPACE"                       \
