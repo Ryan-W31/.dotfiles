@@ -40,5 +40,5 @@ d.config({
 			[d.severity.INFO] = "",
 		},
 	},
-    virtual_text = true,
+	virtual_text = true,
 })

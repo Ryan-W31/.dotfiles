@@ -83,24 +83,6 @@ return {
 			},
 		},
 	},
-	{
-		"echasnovski/mini.files",
-		version = "*",
-		config = function()
-			local minifiles = require("mini.files")
-			minifiles.setup({
-				options = {
-					use_as_default_explorer = false,
-				},
-				mappings = {
-					go_in_plus = "<CR>",
-				},
-			})
-			vim.keymap.set("n", "<leader>tf", function()
-				minifiles.open(vim.api.nvim_buf_get_name(0))
-			end)
-			vim.keymap.set("n", "<leader>tt", minifiles.open)
-		end,
-	},
+	{ "echasnovski/mini.diff", version = "*" },
 	{ "echasnovski/mini.surround", version = "*", event = "VeryLazy", opts = {} },
 }
