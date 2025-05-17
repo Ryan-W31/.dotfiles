@@ -42,9 +42,9 @@ def get_todays_events(calendars: list[str]) -> list[Event]:
     current_date = datetime.now().date()
     try:
         process = subprocess.run(script.split(),
-                                text=True,
-                                capture_output=True,
-                                )
+                                 text=True,
+                                 capture_output=True,
+                                 )
         events_for_all_calendars = process.stdout.strip().split("\n\n")
         events_for_desired_calendars = [event for event in events_for_all_calendars if re.search(pattern, event)]
         final_events = []
