@@ -2,30 +2,23 @@ local home = vim.env.HOME -- Get the home directory
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = home .. "/jdtls-workspace/" .. project_name
 
-local system_os = "linux"
-if vim.fn.has("mac") == 1 then
-	system_os = "mac"
-elseif vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
-	system_os = "win"
-end
+local jdtls = require("jdtls")
+local mason_path = vim.fn.stdpath("data") .. "/mason/share"
 
-local mason = require("mason-registry")
-local jdtls_path = mason.get_package("jdtls"):get_install_path()
-local java_debug_path = mason.get_package("java-debug-adapter"):get_install_path()
-local java_test_path = mason.get_package("java-test"):get_install_path()
-local config_path = vim.fn.glob(jdtls_path .. "/config_" .. system_os)
+local jdtls_path = vim.fn.glob(mason_path .. "/jdtls")
+local java_debug_path = vim.fn.glob(mason_path .. "/java-debug-adapter")
+local java_test_path = vim.fn.glob(mason_path .. "/java-test")
+
+local config_path = vim.fn.glob(jdtls_path .. "/config")
 local lombok_path = jdtls_path .. "/lombok.jar"
 local equinox_launcher_path = vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar")
 
 local bundles = { vim.fn.glob(java_debug_path .. "/extension/server/com.microsoft.java.debug.plugin-*.jar") }
 vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_path .. "/extension/server/*.jar"), "\n"))
 
--- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
-return {
-	-- The command that starts the language server
-	-- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
+local config = {
 	cmd = {
-		"/Library/Java/JavaVirtualMachines/applejdk-21.0.6.7.1.jdk/Contents/Home/bin/java",
+		"/Library/Java/JavaVirtualMachines/applejdk-21.0.7.6.2.jdk/Contents/Home/bin/java",
 		"-Declipse.application=org.eclipse.jdt.ls.core.id1",
 		"-Dosgi.bundles.defaultStartLevel=4",
 		"-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -46,21 +39,15 @@ return {
 		workspace_dir,
 	},
 
-	-- This is the default if not provided, you can remove it. Or adjust as needed.
-	-- One dedicated LSP server & client will be started per unique root_dir
-	-- root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "pom.xml", "build.gradle" }),
 	root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew" }),
-	-- on_attach = require('gmr.configs.lsp').on_attach,
 
-	-- Here you can configure eclipse.jdt.ls specific settings
-	-- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
 	settings = {
 		java = {
 			server = { launchMode = "Hybrid" },
 			-- TODO Replace this with the absolute path to your main java version (JDK 17 or higher)
-			home = "/Library/Java/JavaVirtualMachines/applejdk-21.0.6.7.1.jdk/Contents/Home",
+			home = "/Library/Java/JavaVirtualMachines/applejdk-21.0.7.6.2.jdk/Contents/Home",
 			jdt = {
-				ls = { java = { home = "/Library/Java/JavaVirtualMachines/applejdk-21.0.6.7.1.jdk/Contents/Home" } },
+				ls = { java = { home = "/Library/Java/JavaVirtualMachines/applejdk-21.0.7.6.2.jdk/Contents/Home" } },
 			},
 			eclipse = {
 				downloadSources = true,
@@ -82,7 +69,7 @@ return {
 					},
 					{
 						name = "JavaSE-21",
-						path = "/Library/Java/JavaVirtualMachines/applejdk-21.0.6.7.1.jdk/Contents/Home",
+						path = "/Library/Java/JavaVirtualMachines/applejdk-21.0.7.6.2.jdk/Contents/Home",
 					},
 				},
 			},
@@ -140,4 +127,10 @@ return {
 		bundles = bundles,
 		-- extendedClientCapabilities = jdtls.extendedClientCapabilities,
 	},
+	on_attach = function(_, _)
+		jdtls.setup_dap({ config_overrides = { hotcodereplace = "auto" } })
+		require("jdtls.dap").setup_dap_main_class_configs()
+	end,
 }
+
+jdtls.start_or_attach(config)

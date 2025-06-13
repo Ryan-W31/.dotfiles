@@ -1,6 +1,4 @@
 return {
-	cmd = { "pyright-langserver", "--stdio" },
-	filetypes = { "python" },
 	flags = {
 		debounce_text_changes = 150,
 	},

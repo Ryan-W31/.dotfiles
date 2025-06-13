@@ -46,7 +46,7 @@ sketchybar  --add bracket spaces '/workspace\..*/'
 sketchybar  --add item  highlight_space left                            \
             --subscribe highlight_space aerospace_workspace_change      \
             --set       highlight_space width=22                        \
-                                        background.color=$FOREGROUND    \
+                                        background.color=0xFF31748f     \
                                         background.height=22            \
                                         background.corner_radius=15     \
                                         script='~/.config/sketchybar/plugins/highlight_space.sh'

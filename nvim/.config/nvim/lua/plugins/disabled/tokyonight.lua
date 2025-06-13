@@ -30,6 +30,10 @@ return {
 						guibg = nil,
 						guifg = nil,
 					}
+					hl.Visual = {
+						bg = "#73DACA",
+						fg = "#1a1b26",
+					}
 					hl.Function = {
 						fg = "#FFC66D",
 					}

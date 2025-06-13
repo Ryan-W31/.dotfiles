@@ -2,10 +2,10 @@
 
 options=(
 	style=round
-	width=6.0
+	width=4.0
 	hidpi=on
-	active_color=0xFF73DACA
-	inactive_color=0xFFC0CAF5
+	active_color=0xFFebbcba
+	inactive_color=0xFF31748f
     order=above
 
     blacklist="Webex"

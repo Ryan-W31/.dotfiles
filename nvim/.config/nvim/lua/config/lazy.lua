@@ -28,6 +28,9 @@ vim.keymap.set("n", "<leader>e", "<CMD>Neotree toggle<CR>")
 vim.keymap.set("n", "<leader>r", "<CMD>Neotree focus<CR>")
 vim.keymap.set("n", "<leader>g", "<CMD>Neogit<CR>")
 vim.keymap.set("n", "<leader>cdo", vim.diagnostic.open_float, { buffer = bufnr, desc = "Code Diagnostic Open" })
+vim.keymap.set("n", "<leader>ca", function()
+	require("tiny-code-action").code_action()
+end, { noremap = true, silent = true })
 
 -- Setup lazy.nvim
 require("lazy").setup({
@@ -37,7 +40,7 @@ require("lazy").setup({
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
-	install = { colorscheme = { "tokyonight" } },
+	-- install = { colorscheme = { "tokyonight" } },
 	-- automatically check for plugin updates
 	checker = { enabled = true },
 	ui = {

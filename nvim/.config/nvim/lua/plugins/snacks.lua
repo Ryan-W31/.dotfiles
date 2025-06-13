@@ -245,7 +245,7 @@ return {
 			desc = "Commands",
 		},
 		{
-			"<leader>sd",
+			"<leader>fd",
 			function()
 				Snacks.picker.diagnostics()
 			end,

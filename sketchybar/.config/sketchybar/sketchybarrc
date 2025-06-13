@@ -22,7 +22,7 @@ sketchybar  --default   background.color=$BACKGROUND        \
                         blur_radius=2                       \
                         background.corner_radius=15         \
                         background.height=30                \
-		                background.border_color=$FOREGROUND \
+		                background.border_color=$BLUE  \
                         background.border_width=2
 
 # ~~ left items ~~
