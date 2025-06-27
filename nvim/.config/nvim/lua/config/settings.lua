@@ -1,4 +1,3 @@
-local global = vim.g
 local o = vim.opt
 local d = vim.diagnostic
 

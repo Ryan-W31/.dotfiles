@@ -4,11 +4,9 @@ local workspace_dir = home .. "/jdtls-workspace/" .. project_name
 
 local jdtls = require("jdtls")
 local mason_path = vim.fn.stdpath("data") .. "/mason/share"
-
 local jdtls_path = vim.fn.glob(mason_path .. "/jdtls")
 local java_debug_path = vim.fn.glob(mason_path .. "/java-debug-adapter")
 local java_test_path = vim.fn.glob(mason_path .. "/java-test")
-
 local config_path = vim.fn.glob(jdtls_path .. "/config")
 local lombok_path = jdtls_path .. "/lombok.jar"
 local equinox_launcher_path = vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar")
@@ -132,5 +130,4 @@ local config = {
 		require("jdtls.dap").setup_dap_main_class_configs()
 	end,
 }
-
 jdtls.start_or_attach(config)

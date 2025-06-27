@@ -23,14 +23,9 @@ vim.keymap.set("n", "<leader>q", "<cmd>quit<cr>")
 vim.keymap.set("n", "<leader>w", "<cmd>write<cr>")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "<leader>a", ":keepjumps normal! ggVG<cr>")
 vim.keymap.set("n", "<leader>e", "<CMD>Neotree toggle<CR>")
 vim.keymap.set("n", "<leader>r", "<CMD>Neotree focus<CR>")
 vim.keymap.set("n", "<leader>g", "<CMD>Neogit<CR>")
-vim.keymap.set("n", "<leader>cdo", vim.diagnostic.open_float, { buffer = bufnr, desc = "Code Diagnostic Open" })
-vim.keymap.set("n", "<leader>ca", function()
-	require("tiny-code-action").code_action()
-end, { noremap = true, silent = true })
 
 -- Setup lazy.nvim
 require("lazy").setup({

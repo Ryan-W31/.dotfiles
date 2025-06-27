@@ -1,6 +1,6 @@
 local _border = "rounded"
 
-local lsps = { "bashls", "clangd", "jdtls", "lua_ls", "marksman", "html", "pyright", "yamlls" }
+local lsps = { "bashls", "clangd", "lua_ls", "marksman", "html", "pyright", "yamlls", "jdtls" }
 vim.lsp.enable(lsps)
 
 vim.lsp.config("*", {
@@ -43,7 +43,6 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		event = "VeryLazy",
-		cmd = "Mason",
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
