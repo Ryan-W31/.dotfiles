@@ -29,43 +29,44 @@ do
     sketchybar  --add item  "workspace.$SPACE"  left                \
         --subscribe "workspace.$SPACE"  aerospace_workspace_change  \
         --set       "workspace.$SPACE"                              \
-        icon.font="Zed Mono:Normal:16.0"                            \
+        icon.font="Zed Mono:Bold:16.0"                            \
         icon="$SPACE"                                               \
         icon.align=center                                           \
         icon.width=30                                               \
         icon.y_offset=1                                             \
         label.drawing=off                                           \
         background.drawing=off                                      \
+        script="~/.config/sketchybar/plugins/aerospace.sh $SPACE"   \
         click_script="aerospace workspace $SPACE"
     done
 
 # Group spaces in a bracket
 sketchybar  --add bracket spaces '/workspace\..*/'
-
-# Add highlight dot
-sketchybar  --add item  highlight_space left                \
-    --subscribe highlight_space aerospace_workspace_change  \
-    --set       highlight_space width=22                    \
-    background.color=$BLUE                                  \
-    background.height=22                                    \
-    background.corner_radius=15                             \
-    script='~/.config/sketchybar/plugins/highlight_space.sh'
-
-# Rewrite spaces (will find a better solution later)
-for SPACE in "${SPACES[@]}";
-do
-    sketchybar  --add item  "workspace_ex.$SPACE"   left                \
-        --subscribe "workspace_ex.$SPACE"   aerospace_workspace_change  \
-        --set       "workspace_ex.$SPACE"                               \
-        icon.font="Zed Mono:Bold:16.0" 		                            \
-        icon="$SPACE"                                                   \
-        icon.align=center                                               \
-        icon.width=30                                                   \
-        icon.y_offset=1                                                 \
-        label.drawing=off                                               \
-        background.drawing=off                                          \
-        click_script="aerospace workspace $SPACE"                       \
-        script="~/.config/sketchybar/plugins/aerospace.sh $SPACE"
-    done
-    sketchybar --set workspace_ex.1 padding_left=-292
+#
+# # Add highlight dot
+# sketchybar  --add item  highlight_space left                \
+#     --subscribe highlight_space aerospace_workspace_change  \
+#     --set       highlight_space width=22                    \
+#     background.color=$BLUE                                  \
+#     background.height=22                                    \
+#     background.corner_radius=15                             \
+#     script='~/.config/sketchybar/plugins/highlight_space.sh'
+#
+# # Rewrite spaces (will find a better solution later)
+# for SPACE in "${SPACES[@]}";
+# do
+#     sketchybar  --add item  "workspace_ex.$SPACE"   left                \
+#         --subscribe "workspace_ex.$SPACE"   aerospace_workspace_change  \
+#         --set       "workspace_ex.$SPACE"                               \
+#         icon.font="Zed Mono:Bold:16.0" 		                            \
+#         icon="$SPACE"                                                   \
+#         icon.align=center                                               \
+#         icon.width=30                                                   \
+#         icon.y_offset=1                                                 \
+#         label.drawing=off                                               \
+#         background.drawing=off                                          \
+#         click_script="aerospace workspace $SPACE"                       \
+#         script="~/.config/sketchybar/plugins/aerospace.sh $SPACE"
+#     done
+#     sketchybar --set workspace_ex.1 padding_left=-292
 

@@ -1,8 +1,9 @@
 #!/bin/bash
 
 options=(
+    icon.color=0xFFE0DEF4
     style=round
-    width=6.0
+    width=2.0
     hidpi=on
     active_color=0xFFEBBCBA
     inactive_color=0xFFE0DEF4

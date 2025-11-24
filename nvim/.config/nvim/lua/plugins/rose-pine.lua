@@ -20,6 +20,9 @@ return {
 				["@lsp.type.property.java"] = { fg = "text" },
 
 				["@lsp.typemod.class.public.java"] = { link = "@lsp.type.class.java", inherit = true },
+
+				cppStructure = { fg = "pine", italic = true },
+				cStorageClass = { fg = "pine", italic = true },
 			},
 		})
 		vim.cmd("colorscheme rose-pine")

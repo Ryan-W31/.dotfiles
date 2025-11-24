@@ -18,30 +18,32 @@ sketchybar  --default   updates=when_shown                              \
     label.y_offset=1 				                \
     y_offset=0
 # set defaults
-sketchybar  --default   background.color=$BACKGROUND        \
+sketchybar  --default   background.color=0x2226233A        \
     blur_radius=2                       \
-    background.corner_radius=15         \
+    background.corner_radius=8         \
     background.height=30                \
     background.border_color=$BLUE       \
-    background.border_width=2
+    background.border_width=1
 
 # ~~ left items ~~
-source "./items/apple.sh"
+#source "./items/apple.sh"
 source "./items/spaces.sh"
 source "./items/media.sh"
 
 # update defaults for right items
 sketchybar  --default   background.padding_right=15 \
-    icon.padding_left=12        \
+    icon.padding_left=2        \
     icon.padding_right=4        \
     label.padding_left=4        \
-    label.padding_right=12      \
+    label.padding_right=2      \
 
 # ~~ right items ~~
 source "./items/clock.sh"
 source "./items/date.sh"
 source "./items/weather.sh"
 source "./items/battery.sh"
+
+sketchybar  --add bracket spaces.r '/right\..*/'
 
 # finish config
 sketchybar --hotload on

@@ -85,4 +85,5 @@ return {
 	},
 	{ "echasnovski/mini.diff", version = "*" },
 	{ "echasnovski/mini.surround", version = "*", event = "VeryLazy", opts = {} },
+	{ "echasnovski/mini.comment", version = "*", event = "VeryLazy", opts = {} },
 }

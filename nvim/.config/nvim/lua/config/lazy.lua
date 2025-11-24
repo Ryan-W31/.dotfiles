@@ -27,7 +27,6 @@ vim.keymap.set("n", "<leader>a", ":keepjumps normal! ggVG<cr>")
 vim.keymap.set("n", "<leader>e", "<CMD>Neotree toggle<CR>")
 vim.keymap.set("n", "<leader>r", "<CMD>Neotree focus<CR>")
 vim.keymap.set("n", "<leader>g", "<CMD>Neogit<CR>")
-vim.keymap.set("n", "<leader>cdo", vim.diagnostic.open_float, { buffer = bufnr, desc = "Code Diagnostic Open" })
 
 -- Setup lazy.nvim
 require("lazy").setup({

@@ -2,6 +2,7 @@ local home = vim.env.HOME -- Get the home directory
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = home .. "/jdtls-workspace/" .. project_name
 
+local jdtls = require("jdtls")
 local mason_path = vim.fn.stdpath("data") .. "/mason/share"
 
 local jdtls_path = vim.fn.glob(mason_path .. "/jdtls")
@@ -16,11 +17,11 @@ local bundles = { vim.fn.glob(java_debug_path .. "/extension/server/com.microsof
 vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_path .. "/extension/server/*.jar"), "\n"))
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
-return {
+local config = {
 	-- The command that starts the language server
 	-- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
 	cmd = {
-		"/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home/bin/java",
+		"/opt/homebrew/Cellar/openjdk/25.0.1/libexec/openjdk.jdk/Contents/Home",
 		"-Declipse.application=org.eclipse.jdt.ls.core.id1",
 		"-Dosgi.bundles.defaultStartLevel=4",
 		"-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -41,32 +42,49 @@ return {
 		workspace_dir,
 	},
 
-	-- This is the default if not provided, you can remove it. Or adjust as needed.
-	-- One dedicated LSP server & client will be started per unique root_dir
-	-- root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "pom.xml", "build.gradle" }),
-	--root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew" }),
-	root_markers = {
+	root_dir = vim.fs.root(0, {
 		".git",
+		"gradlew",
 		"build.gradle",
 		"build.gradle.kts",
 		"build.xml",
 		"pom.xml",
 		"settings.gradle",
 		"settings.gradle.kts",
-	},
-	-- on_attach = require('gmr.configs.lsp').on_attach,
+	}),
 	filetypes = { "java" },
 
-	-- Here you can configure eclipse.jdt.ls specific settings
-	-- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
+	init_options = {
+		--   -- References the bundles defined above to support Debugging and Unit Testing
+		bundles = bundles,
+		-- extendedClientCapabilities = jdtls.extendedClientCapabilities,
+		settings = {
+			java = {
+				imports = { -- <- this
+					gradle = {
+						enabled = true,
+						wrapper = {
+							enabled = true,
+							checksums = {
+								{
+									sha256 = "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172",
+									allowed = true,
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+	},
 	settings = {
 		java = {
 			server = { launchMode = "Hybrid" },
 			-- TODO Replace this with the absolute path to your main java version (JDK 17 or higher)
-			home = "/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home",
+			home = "/opt/homebrew/Cellar/openjdk/25.0.1/libexec/openjdk.jdk/Contents/Home",
 			jdt = {
 				ls = {
-					java = { home = "/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home" },
+					java = { home = "/opt/homebrew/Cellar/openjdk/25.0.1/libexec/openjdk.jdk/Contents/Home" },
 					lombokSupport = true,
 				},
 			},
@@ -80,6 +98,10 @@ return {
 				updateBuildConfiguration = "interactive",
 				-- The runtime name parameters need to match specific Java execution environments.  See https://github.com/tamago324/nlsp-settings.nvim/blob/2a52e793d4f293c0e1d61ee5794e3ff62bfbbb5d/schemas/_generated/jdtls.json#L317-L334
 				runtimes = {
+					{
+						name = "JavaSE-25",
+						path = "/opt/homebrew/Cellar/openjdk/25.0.1/libexec/openjdk.jdk/Contents/Home",
+					},
 					{
 						name = "JavaSE-21",
 						path = "/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home",
@@ -99,34 +121,11 @@ return {
 			format = {
 				enabled = true,
 			},
-			completion = {
-				-- favoriteStaticMembers = {
-				--   "org.hamcrest.MatcherAssert.assertThat",
-				--   "org.hamcrest.Matchers.*",
-				--   "org.hamcrest.CoreMatchers.*",
-				--   "org.junit.jupiter.api.Assertions.*",
-				--   "java.util.Objects.requireNonNull",
-				--   "java.util.Objects.requireNonNullElse",
-				--   "org.mockito.Mockito.*",
-				-- },
-				importOrder = {
-					"java",
-					"javax",
-					"com",
-					"org",
-				},
-			},
 			sources = {
 				organizeImports = {
 					starThreshold = 9999,
 					staticStarThreshold = 9999,
 				},
-			},
-			codeGeneration = {
-				toString = {
-					template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
-				},
-				useBlocks = true,
 			},
 		},
 	},
@@ -135,9 +134,11 @@ return {
 	flags = {
 		allow_incremental_sync = true,
 	},
-	init_options = {
-		--   -- References the bundles defined above to support Debugging and Unit Testing
-		bundles = bundles,
-		-- extendedClientCapabilities = jdtls.extendedClientCapabilities,
-	},
+
+	on_attach = function(_, _)
+		jdtls.setup_dap({ config_overrides = { hotcodereplace = "auto" } })
+		require("jdtls.dap").setup_dap_main_class_configs()
+	end,
 }
+
+jdtls.start_or_attach(config)

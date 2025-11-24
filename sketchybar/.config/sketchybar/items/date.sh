@@ -1,7 +1,8 @@
 #!/bin/sh
 
-sketchybar --add item date right \
-    --set      date icon=󱨰       \
+sketchybar --add item right.date right \
+    --set      right.date icon=󱨰       \
+    background.drawing=off \
     icon.color=$YELLOW           \
     label="$(date '+%a %b %d')"  \
     updates=on                   \

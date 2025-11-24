@@ -107,7 +107,7 @@ get_icon() {
     fi
 }
 
-API="http://api.weatherapi.com/v1/current.json?key=45899bf72d194256bbc23402252901&q=Austin&aqi=no"
+API="http://api.weatherapi.com/v1/current.json?key=45899bf72d194256bbc23402252901&q=78717&aqi=no"
 # get KEY and CITY from the config file
 # source ./plugins/weather.env.sh
 
