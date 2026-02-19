@@ -43,7 +43,7 @@ zinit snippet OMZP::colored-man-pages
 # zinit snippet OMZP::kubectl
 # zinit snippet OMZP::kubectx
 
-# History
+# HISTORY (optimized for high context retention)
 HISTFILE=~/.zsh_history
 HISTSIZE=50000                # Increase the number of commands to remember in memory
 SAVEHIST=$HISTSIZE            # Increase the number of commands to save in the history file
